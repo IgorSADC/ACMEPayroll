@@ -21,6 +21,8 @@ class Interval:
             self.eliminate_minutes_from_hour(end_time) - self.eliminate_minutes_from_hour(self.final_time) <=0
         )
 
+    def __repr__(self) -> str:
+        return f"{self.initial_time[0]}:{self.initial_time[1]}-{self.final_time[1]}:{self.final_time[1]}"
 
 
 
