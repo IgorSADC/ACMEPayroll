@@ -11,4 +11,4 @@
 - Datastructures are enums and simple structures to hold data. Those structures are responsible to validate the data inside them or execute structure specific logic. I planned more structures but I am out of time here.
 
 
-Inter
+I couldn't document or test my code. I was planning a cool testing library using decorators but I couldn't find the time to do it. I'm sorry.

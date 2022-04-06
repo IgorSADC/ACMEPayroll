@@ -11,6 +11,7 @@ class Runner:
     def __call__(self, input_str : str) -> float:
         return self.__total_earned(input_str)
 
+
     def __total_earned(self, input_str : str):
         total_earned = 0
         for day, start_time, end_time in self.parser.parse_input(input_str):
