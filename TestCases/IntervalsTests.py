@@ -17,7 +17,6 @@ def test_non_overriding_interval():
     interval_1 = Interval((10, 0), (12, 0))
     interval_2 = Interval((12, 1), (14, 0))
     config_manager = ConfigManager()
-    print(config_manager.intervals)
     config_manager.register_interval(interval_1)
     config_manager.register_interval(interval_2)
 

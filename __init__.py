@@ -1,11 +1,14 @@
 from functools import partial
 import sys
 from paramiko import ConfigParseError
-from ConfigManager import ConfigManager
 from DataStructures.DefaultTagEnum import DefaultTagEnum
 from DataStructures.Interval import Interval
-from InputParser import InputParser
 from DataStructures.DayEnum import DayEnum
+from Managers.ConfigManager import ConfigManager
+from Managers.FacadeManager import FacadeManager
+from Managers.InputParser import InputParser
+from Managers.IntervalManager import IntervalManager
+from Managers.PaymentManager import PaymentManager
 from Runner import Runner
 from Validation.TestMode import TestMode
 from Validation.core import PrintInfo, TestIt
@@ -33,11 +36,13 @@ def main():
         }
     }
 
-    config_manager = ConfigManager()
+    config_manager = ConfigManager(InputParser, IntervalManager, PaymentManager )
     config_manager.register_interval(first_interval)
     config_manager.register_interval(second_interval)
     config_manager.register_interval(third_interval)
-    config_manager.register_configuration(payment_configuration)
+    for k in payment_configuration:
+        print(k)
+        config_manager.register_payment(k, payment_configuration[k])
 
 
     runner_intance = Runner(config_manager, InputParser)
