@@ -41,7 +41,6 @@ def main():
     config_manager.register_interval(second_interval)
     config_manager.register_interval(third_interval)
     for k in payment_configuration:
-        print(k)
         config_manager.register_payment(k, payment_configuration[k])
 
 

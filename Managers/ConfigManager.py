@@ -5,7 +5,6 @@ from DesignPattern.Facade import Facade
 class ConfigManager():
     def __init__(self, *args) -> None:
         self.dependency_injection_container = DependencyInjectionContainer(*args)
-        print(self.dependency_injection_container.instances.values())
         self.facade = Facade(*self.dependency_injection_container.instances.values())
 
 

@@ -1,4 +1,5 @@
 from inspect import signature, _empty, getmro
+from Utils.PascalToSnake import pascal_to_snake
 import re
 
 class DependencyInjectionContainer:
@@ -42,12 +43,12 @@ class DependencyInjectionContainer:
 
                 if(len(self.dependency_mapping[classe_to_inject]) == 0):
                     self.instances[interface_to_inject] = classe_to_inject()
-                    print(f"Instantiating {classe_to_inject}")
+                    print(f"Instantiating {classe_to_inject.__name__}")
                     self.dependency_injected_classes.remove(classe_to_inject)
 
                 elif(set(self.dependency_mapping[classe_to_inject]).issubset(self.instances.keys())):
                     dependency_instances_list = [self.instances[c] for c in self.dependency_mapping[classe_to_inject]]
-                    print(f"Instantiating {classe_to_inject}")
+                    print(f"Instantiating {classe_to_inject.__name__}")
                     self.instances[interface_to_inject] = classe_to_inject(*dependency_instances_list)
                     self.dependency_injected_classes.remove(classe_to_inject)
 
@@ -68,7 +69,7 @@ class DependencyInjectionContainer:
                 if(annotation is not _empty):
                     self.dependency_mapping[class_to_instantiate].append(annotation)
                 else:
-                    print(f'{class_to_instantiate}-{parameter_name}')
+                    print(f'{class_to_instantiate.__name__}-{parameter_name}')
                     raise ValueError("You can't do dependency injection without type annotation on non defaulted parameters")
                     
     def __extract_interface_mapping(self, class_to_instantiate):
@@ -83,20 +84,13 @@ class DependencyInjectionContainer:
         else:
             self.interface_class_mapping[class_to_instantiate] = class_to_instantiate
 
-    def __pascal_to_snake(self, str_to_convert : str):
-        #retirar isso daqui depois
-        return re.sub("([A-Z])", 
-                lambda match: '_' + match.group(1).lower(), 
-                str_to_convert)[1:]
-
     def __enter__(self, *args):
         for class_name in self.instances:
-            print(class_name.__name__)
 
-            globals()[self.__pascal_to_snake(class_name.__name__)] = self.instances[class_name]
+            globals()[pascal_to_snake(class_name.__name__)] = self.instances[class_name]
     
     def __exit__(self, *args):
         for class_name in self.instances:
 
-            del globals()[self.__pascal_to_snake(class_name.__name__)]
+            del globals()[pascal_to_snake(class_name.__name__)]
     
