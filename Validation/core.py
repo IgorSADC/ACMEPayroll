@@ -33,11 +33,3 @@ def TestIt(test_mode : TestMode, assertion_value : any = None):
         return Wrapper()
     
     return decorator
-
-
-def PrintInfo(f):
-    def Wrapper():
-        print(f)
-
-    return Wrapper
-        

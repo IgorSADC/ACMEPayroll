@@ -1,4 +1,5 @@
-from ConfigManager import ConfigManager
+from Managers.ConfigManager import ConfigManager
+from Managers.IntervalManager import IntervalManager
 from DataStructures.Interval import Interval
 from Validation.TestMode import TestMode
 from Validation.core import TestIt
@@ -8,7 +9,7 @@ from Validation.core import TestIt
 def test_overriding_interval():
     interval_1 = Interval((10, 0), (12, 0))
     interval_2 = Interval((11, 0), (14, 0))
-    config_manager = ConfigManager()
+    config_manager = ConfigManager(IntervalManager)
     config_manager.register_interval(interval_1)
     config_manager.register_interval(interval_2)
 
@@ -16,7 +17,7 @@ def test_overriding_interval():
 def test_non_overriding_interval():
     interval_1 = Interval((10, 0), (12, 0))
     interval_2 = Interval((12, 1), (14, 0))
-    config_manager = ConfigManager()
+    config_manager = ConfigManager(IntervalManager)
     config_manager.register_interval(interval_1)
     config_manager.register_interval(interval_2)
 

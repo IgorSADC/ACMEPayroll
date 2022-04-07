@@ -11,7 +11,7 @@ from Managers.IntervalManager import IntervalManager
 from Managers.PaymentManager import PaymentManager
 from Runner import Runner
 from Validation.TestMode import TestMode
-from Validation.core import PrintInfo, TestIt
+from Validation.core import TestIt
 import os
 from inspect import getmembers, isfunction
 if('--test' in sys.argv):
