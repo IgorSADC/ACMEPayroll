@@ -63,9 +63,6 @@ class DependencyInjectionContainer:
             self.instances[interface_to_inject] = classe_to_inject(*dependency_instances_list)
 
         self.dependency_injected_classes.remove(classe_to_inject)
-        
-
-        
 
     def __get_dependencies_of_classes(self):
         self.dependency_mapping = {}
@@ -91,7 +88,7 @@ class DependencyInjectionContainer:
             implemented_interface = implemented_interfaces[1] 
             if(implemented_interface.__name__[0] == 'I'): # this is because object can appear here.
                 if (implemented_interface in self.interface_class_mapping.keys()): raise ValueError("You can't have two instances of the same interface")
-                
+
                 self.interface_class_mapping[implemented_interface] = class_to_instantiate
             else:
                 self.interface_class_mapping[class_to_instantiate] = class_to_instantiate

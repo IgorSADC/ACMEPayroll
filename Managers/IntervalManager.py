@@ -17,7 +17,6 @@ class IntervalManager(IIntervalManager):
         overrided_intervals = [i for i in self.intervals if i.in_interval(interval.initial_time, interval.initial_time) or i.in_interval(interval.final_time, interval.final_time)]
         
         if(len(overrided_intervals) > 0):
-            print(overrided_intervals)
             raise ValueError("Interval is overriding one already registered")
         
         self.intervals.append(interval)
