@@ -13,6 +13,9 @@ from Validation.core import TestIt
 
 @TestIt(TestMode.AssertNThrow)
 def test_default_config_injection():
+    '''
+        Tests if the dependency injection is working with the default implmentations used on the software.
+    '''
     dependency_injection_container = DependencyInjectionContainer(InputParser,IntervalManager,PaymentManager)
 
 
@@ -47,6 +50,9 @@ class Logger:
 
 @TestIt(TestMode.AssertEq, ["Hi World", "Hello World"])
 def test_injecting_different_classes():
+    '''
+        Checks if the behaviour of different containers with different implementations is working.
+    '''
     output_list = []
 
     with DependencyInjectionContainer(Logger, MessagePrinter) as container:
@@ -62,6 +68,9 @@ def test_injecting_different_classes():
 
 @TestIt(TestMode.AssertThrow)
 def test_two_of_the_same_interface_error():
+    '''
+    Tests if the container throws an exception if you give it two different classes implementing the same interface.
+    '''
     with DependencyInjectionContainer(Logger, MessagePrinter, HelloWorldPrinter) as container:
         pass
 

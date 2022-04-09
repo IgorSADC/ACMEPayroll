@@ -7,6 +7,9 @@ from Validation.core import TestIt
 
 @TestIt(TestMode.AssertThrow)
 def test_overriding_interval():
+    '''
+    Testing error on trying to register overlapping intervals
+    '''
     interval_1 = Interval((10, 0), (12, 0))
     interval_2 = Interval((11, 0), (14, 0))
     config_manager = ConfigManager(IntervalManager)
@@ -15,6 +18,9 @@ def test_overriding_interval():
 
 @TestIt(TestMode.AssertNThrow)
 def test_non_overriding_interval():
+    '''
+    Testing if everything is fine with fine intervals
+    '''
     interval_1 = Interval((10, 0), (12, 0))
     interval_2 = Interval((12, 1), (14, 0))
     config_manager = ConfigManager(IntervalManager)
@@ -24,6 +30,9 @@ def test_non_overriding_interval():
 
 @TestIt(TestMode.AssertEq, True)
 def test_in_interval():
+    '''
+    Testing the in_interval method.
+    '''
     test_result = True
     interval_1 = Interval(
         (10, 0), 

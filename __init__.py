@@ -1,19 +1,12 @@
-from functools import partial
 import sys
-from paramiko import ConfigParseError
 from DataStructures.DefaultTagEnum import DefaultTagEnum
 from DataStructures.Interval import Interval
-from DataStructures.DayEnum import DayEnum
 from Managers.ConfigManager import ConfigManager
-from Managers.FacadeManager import FacadeManager
 from Managers.InputParser import InputParser
 from Managers.IntervalManager import IntervalManager
 from Managers.PaymentManager import PaymentManager
 from Runner import Runner
-from Validation.TestMode import TestMode
-from Validation.core import TestIt
 import os
-from inspect import getmembers, isfunction
 if('--test' in sys.argv):
     from TestCases import *
 
@@ -44,7 +37,7 @@ def main():
         config_manager.register_payment(k, payment_configuration[k])
 
 
-    runner_intance = Runner(config_manager, InputParser)
+    runner_intance = Runner(config_manager)
 
     EXAMPLE_INPUT='RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00'
     print(runner_intance(EXAMPLE_INPUT))

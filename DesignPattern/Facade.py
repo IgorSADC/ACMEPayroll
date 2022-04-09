@@ -1,6 +1,10 @@
 import re
 
 class Facade:
+    '''
+    A simple pythonic implementation of the Facade pattern. 
+    It maps all methods from the objects passed to the constructor to the object beign constructed.
+    '''
     def __init__(self, *args):
         #I know I could do it in one loop, but I like the readbility here.
         #I would probably change for production though

@@ -4,9 +4,16 @@ from DataStructures.Interval import Interval
 
 
 class Runner:
-    def __init__(self, configuration, parser) -> None:
+    '''
+    The runner is responsible to execute the business logic of the software. 
+    It maps the day to tags and configure all managers to execute using the ConfigurationManager facade.
+
+    METHODS 
+    --------
+    __init__(configuration : ConfigurationManager, parser : )
+    '''
+    def __init__(self, configuration) -> None:
         self.configuration = configuration
-        self.parser = parser
 
     def __call__(self, input_str : str) -> float:
         return self.__total_earned(input_str)
@@ -14,7 +21,7 @@ class Runner:
 
     def __total_earned(self, input_str : str):
         total_earned = 0
-        for day, start_time, end_time in self.parser.parse_input(input_str):
+        for day, start_time, end_time in self.configuration.parse_input(input_str):
             period_worked_hours = end_time[0] - start_time[0] + (end_time[1] - start_time[1])/60
 
             matched_intervals = [interval for interval in self.configuration.get_intervals() if interval.in_interval(start_time, end_time)]

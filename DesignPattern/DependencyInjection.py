@@ -8,9 +8,39 @@ class DependencyInjectionContainer:
     '''
         This is a simple implementation of the dependency injection pattern. It's not very robust as it is not necessary for the project.
         Usually would be better to do it with a whole graph library and search for loops but I'm keeping it simple.
+
+        ATTRIBUTTES
+        ---------
+        verbose : bool
+            Tells if the container should log the instantiation of objects.
+        
+        dependency_injected_classes : list
+            List of the classes inside the contaier
+        
+        interface_class_mapping : dict
+            Maps interfaces to the classes that implements them inside the container.
+
+        instances : dict
+            Maps interfaces to the instances of the classes mapped on interface_class_mapping.
+
+        METHODS
+        --------
+        __init__(*args : DependencyInjectedClasses, verbose : bool)
+            Constructs the container. You can pass many classes as you want.
     '''
     DependencyInjectedClass = any
     def __init__(self, *args : DependencyInjectedClass, verbose=False):
+        '''
+        Constructs the container and all instances.
+        NamingConvention:
+            - Interfaces starts with a big I.
+            - Classes and Interfaces names are PascalCased.
+
+        RAISES
+        ----------
+        ValueError
+            If the container is missing one dependency that is not defaulted.
+        '''
         self.verbose = verbose
 
         self.dependency_injected_classes : list = [*args] #convert tuple to list

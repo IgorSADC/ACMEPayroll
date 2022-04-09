@@ -1,7 +1,7 @@
 Disclaimer: I think I'm doing way too much here because is a test for a job. Software engineering as literally everything on computer science and technology is a tradeoff.
 This piece of software was very complex to design because it's functionality is rather simplistic. I could solve it all with 5 lines of code or maybe less (of course without considering any wild edge case). Usually design patterns and code design abstract operations decreasing complexity but here I felt like I was increasing complexity for no reason. There is no way someone will change half of the interfaces here.
 
-I mean, the code is extremly modular right now and change a small part of it is pretty easily, but <b>I think it would be better if this software simply had less parts</b>.
+I mean, the code is extremly modular right now and change a small part of it is pretty easy, but <b>I think it would be better if this software simply had less parts</b>.
 I actually had one experience like that where someone did a MVC application to do some data extraction and I went for a script mapping extraction fields to the database. The script was very robust and simple as it was just a couple lines of code. When the extraction format changed it completly broke at least half of the MVC application. The models simply didn't work anymore but my script could have survived the process.
 
 I am just saying sometimes less is more and this code is just me showing off. I wouldn't go with it for production.

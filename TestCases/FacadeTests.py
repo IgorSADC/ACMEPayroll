@@ -21,6 +21,9 @@ class MyClassToFacade2:
 
 @TestIt(TestMode.AssertNThrow)
 def test_facade_has_methods():
+    '''
+    Tests if the facade has all method it should have.
+    '''
     my_class_to_facade_1 = MyClassToFacade1()
     my_class_to_facade_2 = MyClassToFacade2()
     facade = Facade(my_class_to_facade_1, my_class_to_facade_2)
@@ -41,10 +44,13 @@ class MyClassToFacade3:
 
 @TestIt(TestMode.AssertEq, "Hello World")
 def test_facade_returns_correct_property():
+    '''
+    Tests if the facade return the attribute/property of the class it's points towards to.
+    '''
     my_class_to_facade_1 = MyClassToFacade1()
     my_class_to_facade_2 = MyClassToFacade2()
     my_class_to_facade_3 = MyClassToFacade3("Hello World")
     facade = Facade(my_class_to_facade_1,my_class_to_facade_2,my_class_to_facade_3)
-    
+
     return facade.get_message()
 
