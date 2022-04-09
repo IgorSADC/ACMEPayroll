@@ -18,3 +18,16 @@ I am just saying sometimes less is more and this code is just me showing off. I 
 
 \* I'm saying pseudo decorator here because it's not really a 
 decorator. <b>It does not returns a function, it actually execute the tests</b>. I just fooled the python interpreter into letting me using the cool @ syntax. Pretty cool, right? I mean, I thought it was cool at least.
+
+# Usage
+To run de program you just need to run de __init__.py:
+
+python3 __init__.py
+
+To run the program with all the tests you need to pass the --test flag:
+
+python3 __init__.py --test
+
+To change any of the interfaces you are going to need to change the code inside __init__.py. 
+
+To analyse more cases you can edit the cases.input file. The payroll is outputed on the console.
